@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanmay Priyadarshi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #0F1117;
+    --ink-soft: #3A3D47;
+    --paper:    #F7F6F2;
+    --white:    #FFFFFF;
+    --gold:     #C9A84C;
+    --gold-lt:  #E8D08A;
+    --slate:    #1E2330;
+    --muted:    #8A8D96;
+    --line:     #E2E0D8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 4rem;
+    background: rgba(247,246,242,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--ink); text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-soft);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+  .hero-left {
+    background: var(--slate);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5rem 6rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.4rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700; line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.6rem;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--gold-lt);
+  }
+  .hero-tagline {
+    font-size: 1rem; font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 380px; line-height: 1.7;
+    margin-bottom: 2.4rem;
+  }
+  .hero-quote {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.2rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 340px;
+  }
+  .hero-right {
+    background: var(--white);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 4rem 3rem;
+    gap: 1.6rem;
+  }
+  .photo-pair {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; width: 100%; max-width: 420px;
+  }
+  .photo-card {
+    aspect-ratio: 3/4;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    background: var(--line);
+  }
+  .photo-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .photo-card .photo-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(15,17,23,0.75));
+    color: #fff;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1.2rem 0.8rem 0.6rem;
+    font-family: 'DM Mono', monospace;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; padding: 1rem;
+    text-align: center;
+  }
+  .photo-placeholder .icon { font-size: 2rem; opacity: 0.4; }
+  .photo-placeholder p {
+    font-size: 0.72rem; color: var(--muted);
+    line-height: 1.4;
+  }
+  .hero-contact {
+    display: flex; gap: 1.4rem; flex-wrap: wrap;
+    justify-content: center;
+  }
+  .contact-chip {
+    display: flex; align-items: center; gap: 0.45rem;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--ink-soft); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-chip:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 0; }
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 2rem; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    font-weight: 700; line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .section-rule {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 2.8rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem;
+    align-items: center;
+  }
+  .about-body {
+    font-size: 1.02rem; font-weight: 300;
+    color: var(--ink-soft); line-height: 1.85;
+  }
+  .about-body p + p { margin-top: 1.1rem; }
+  .about-body strong { font-weight: 600; color: var(--ink); }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem;
+  }
+  .stat-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.4rem 1.2rem;
+    background: var(--paper);
+  }
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card .lbl {
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--muted); letter-spacing: 0.05em;
+  }
+
+  /* ── BACKGROUND / TIMELINE ── */
+  #background { background: var(--paper); }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid; grid-template-columns: 140px 1px 1fr;
+    gap: 0 2rem; position: relative;
+  }
+  .timeline-item:not(:last-child) .tl-line::after {
+    content: ''; position: absolute;
+    top: 24px; bottom: -1px; left: 0;
+    width: 1px; background: var(--line);
+  }
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--muted);
+    padding-top: 4px; text-align: right;
+    line-height: 1.4;
+  }
+  .tl-line {
+    display: flex; flex-direction: column;
+    align-items: center; position: relative;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--white);
+    flex-shrink: 0; margin-top: 5px;
+    box-shadow: 0 0 0 3px var(--gold-lt);
+  }
+  .tl-body { padding-bottom: 2.4rem; }
+  .tl-role {
+    font-weight: 600; font-size: 1rem;
+    color: var(--ink); margin-bottom: 0.2rem;
+  }
+  .tl-org {
+    font-size: 0.84rem; color: var(--gold);
+    font-weight: 500; margin-bottom: 0.6rem;
+  }
+  .tl-desc {
+    font-size: 0.88rem; color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .tl-desc ul { list-style: none; padding: 0; }
+  .tl-desc ul li { padding-left: 1.1rem; position: relative; margin-bottom: 0.25rem; }
+  .tl-desc ul li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--gold); font-size: 0.8rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--slate); }
+  #skills .section-title { color: var(--white); }
+  #skills .section-label { color: var(--gold); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  .skill-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px; padding: 1.6rem 1.4rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .skill-card:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.35);
+  }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .skill-name {
+    font-weight: 600; font-size: 0.95rem;
+    color: var(--white); margin-bottom: 0.3rem;
+  }
+  .skill-note {
+    font-size: 0.78rem; color: rgba(255,255,255,0.42);
+    line-height: 1.5;
+  }
+  .skill-bar {
+    margin-top: 0.9rem;
+    height: 3px; background: rgba(255,255,255,0.1);
+    border-radius: 99px; overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+    border-radius: 99px;
+    transition: width 1s ease;
+  }
+
+  /* ── HOBBIES ── */
+  #hobbies { background: var(--white); }
+  .hobbies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .hobby-card {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 1.6rem 1.4rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .hobby-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .hobby-emoji { font-size: 2rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .hobby-name {
+    font-weight: 600; font-size: 0.95rem;
+    color: var(--ink); margin-bottom: 0.25rem;
+  }
+  .hobby-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.55; }
+
+  /* ── QUOTE BANNER ── */
+  .quote-banner {
+    background: var(--gold);
+    padding: 4rem 2rem; text-align: center;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--ink);
+    max-width: 680px; margin: 0 auto 0.8rem;
+    line-height: 1.45;
+  }
+  .quote-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(15,17,23,0.55);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 2.4rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--white); font-weight: 700;
+  }
+  .footer-note {
+    font-size: 0.78rem; color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    nav { padding: 1rem 1.6rem; }
+    .nav-links { gap: 1.4rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 2rem 3rem; }
+    .hero-right { padding: 2.5rem 2rem 4rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .hobbies-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 2rem; }
+    .timeline-item { grid-template-columns: 90px 1px 1fr; gap: 0 1.2rem; }
+  }
+
+  @media (max-width: 540px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .photo-pair { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Tanmay Priyadarshi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfolio · 2026</p>
+    <h1 class="hero-name">Tanmay<br><em>Priyadarshi</em></h1>
+    <p class="hero-tagline">Risk consultant turned MBA student — driven by curiosity, fuelled by problem-solving, and equal parts analyst and artist.</p>
+    <blockquote class="hero-quote">"Be the change you wish to see in the world."<br>— Mahatma Gandhi</blockquote>
+  </div>
+  <div class="hero-right">
+    <div class="photo-pair">
+      <div class="photo-card">
+        <!-- Replace src with your beatboxing photo path -->
+        <img src="beatbox.jpg" alt="Tanmay beatboxing at VIT">
+        <span class="photo-label">On stage · VIT</span>
+      </div>
+      <div class="photo-card">
+        <!-- Replace src with your formals photo path -->
+        <img src="formal.jpg" alt="Tanmay in business formals">
+        <span class="photo-label">Business Formals</span>
+      </div>
+    </div>
+    <div class="hero-contact">
+      <a class="contact-chip" href="tel:8427692417">📞 8427692417</a>
+      <a class="contact-chip" href="mailto:tanmay09p@gmail.com">✉ tanmay09p@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div>
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Analyst by training,<br>creative by nature.</h2>
+        <div class="section-rule"></div>
+        <div class="about-body">
+          <p>Hi, I'm Tanmay — a <strong>B.Tech graduate from VIT Vellore</strong> in Electrical & Electronics Engineering, currently pursuing my MBA. Before that, I spent nearly two years as a <strong>Risk Consultant at PwC</strong>, where I audited information security frameworks and helped organisations close compliance gaps.</p>
+          <p>What sets me apart is the range: I've conducted ISO 27001 audits by day and performed beatbox sets in college auditoriums by night. I believe the same pattern-recognition that makes a good analyst makes a good performer — both demand that you listen carefully before you act.</p>
+          <p>I'm drawn to <strong>strategy, problem-solving, and building things</strong> — whether that's a risk assessment framework, a video edit, or a beatboxing routine from scratch.</p>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">8.33</div>
+          <div class="lbl">CGPA · VIT Vellore</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2+</div>
+          <div class="lbl">Years Professional Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">120+</div>
+          <div class="lbl">Students mentored in Maths</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">PwC</div>
+          <div class="lbl">Risk Consultant · ISO 27001</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACKGROUND -->
+<section id="background">
+  <div class="container">
+    <p class="section-label reveal">Background</p>
+    <h2 class="section-title reveal">The journey so far.</h2>
+    <div class="section-rule reveal"></div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">2026<br>Present</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-role">MBA Student</div>
+          <div class="tl-org">Management School · India</div>
+          <div class="tl-desc">Pursuing post-graduate management studies with a focus on strategy and operations. Applying consulting experience to business cases and leadership challenges.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">Apr 2024<br>Feb 2025</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-role">Academic Instructor</div>
+          <div class="tl-org">IMS Patna</div>
+          <div class="tl-desc">
+            <ul>
+              <li>Taught Arithmetic & Algebra to IPMAT aspirants</li>
+              <li>Focused on concept clarity and structured problem-solving</li>
+              <li>Helped students overcome math anxiety through guided practice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">Jul 2022<br>Feb 2024</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-role">Risk Consultant (Associate)</div>
+          <div class="tl-org">PricewaterhouseCoopers (PwC)</div>
+          <div class="tl-desc">
+            <ul>
+              <li>Conducted 2 internal audits aligned with ISO 27001 for information security compliance</li>
+              <li>Drafted security policies and compliance documentation</li>
+              <li>Performed Excel-based control mapping and risk assessment analysis</li>
+              <li>Identified compliance gaps and recommended improvements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">2018<br>2022</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-role">B.Tech — Electrical & Electronics Engineering</div>
+          <div class="tl-org">Vellore Institute of Technology, Vellore · CGPA 8.33</div>
+          <div class="tl-desc">Graduated with strong academic standing. Led the VIT Beatboxing Club as Events & Documentation Head — organised workshops, developed training sessions, and recruited new members through online auditions.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">2018</div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-role">Class XII</div>
+          <div class="tl-org">Kendriya Vidyalaya No. 1, Patiala Cantt · 86%</div>
+          <div class="tl-desc">Completed senior secondary education with strong scores, building the foundation for an engineering degree.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Skills</p>
+    <h2 class="section-title reveal">What I bring to the table.</h2>
+    <div class="section-rule reveal"></div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎙️</div>
+        <div class="skill-name">Beatboxing & Vocal Percussion</div>
+        <div class="skill-note">Performed at college events; trained and recruited new members at VIT Beatboxing Club</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎬</div>
+        <div class="skill-name">Video & Audio Editing</div>
+        <div class="skill-note">Comfortable with editing timelines, colour grading, and audio mixing for short-form content</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Microsoft Excel</div>
+        <div class="skill-note">Intermediate — used for control mapping, risk assessments, and data analysis at PwC</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔒</div>
+        <div class="skill-name">Information Security (ISO 27001)</div>
+        <div class="skill-note">Hands-on audit experience — policy drafting, gap analysis, compliance documentation</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Analytical Problem Solving</div>
+        <div class="skill-note">Applied in consulting, teaching, and competitive environments — structured frameworks, clear reasoning</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎤</div>
+        <div class="skill-name">Communication & Presentation</div>
+        <div class="skill-note">Classroom instruction, client-facing consulting, and public performances have all sharpened this</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="container">
+    <p class="section-label reveal">Hobbies & Interests</p>
+    <h2 class="section-title reveal">Life outside the classroom.</h2>
+    <div class="section-rule reveal"></div>
+    <div class="hobbies-grid">
+      <div class="hobby-card reveal">
+        <div class="hobby-emoji">⚽</div>
+        <div>
+          <div class="hobby-name">Football</div>
+          <div class="hobby-desc">A lifelong passion — football taught me teamwork and reading the game before consulting ever did. Always up for a match.</div>
+        </div>
+      </div>
+      <div class="hobby-card reveal">
+        <div class="hobby-emoji">🎙️</div>
+        <div>
+          <div class="hobby-name">Beatboxing</div>
+          <div class="hobby-desc">More than a hobby — it's an art form. From college stages to building a club from the ground up, beatboxing is where creativity meets discipline.</div>
+        </div>
+      </div>
+      <div class="hobby-card reveal">
+        <div class="hobby-emoji">🎮</div>
+        <div>
+          <div class="hobby-name">FPS Video Games</div>
+          <div class="hobby-desc">Competitive gaming sharpens reflexes and decision-making under pressure. Titles like Valorant and CS:GO have been my go-to.</div>
+        </div>
+      </div>
+      <div class="hobby-card reveal">
+        <div class="hobby-emoji">🎞️</div>
+        <div>
+          <div class="hobby-name">Video Editing</div>
+          <div class="hobby-desc">Telling stories through cuts, pacing, and sound. I enjoy the craft of editing as much as the content itself.</div>
+        </div>
+      </div>
+      <div class="hobby-card reveal">
+        <div class="hobby-emoji">🌱</div>
+        <div>
+          <div class="hobby-name">Gardening</div>
+          <div class="hobby-desc">A quieter side to me — there's something grounding about growing things. Patience, attention, and delayed gratification in its purest form.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner reveal">
+  <p class="quote-text">"Be the change you wish to see in the world."</p>
+  <p class="quote-attr">— Mahatma Gandhi</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Tanmay Priyadarshi</span>
+  <span class="footer-note">tanmay09p@gmail.com · 8427692417</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(r => io.observe(r));
+
+  // Skill bar animation trigger
+  const skillFills = document.querySelectorAll('.skill-fill');
+  skillFills.forEach(el => {
+    const target = el.style.width;
+    el.style.width = '0';
+    const sfObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { el.style.width = target; sfObs.unobserve(el); }
+      });
+    }, { threshold: 0.5 });
+    sfObs.observe(el);
+  });
+</script>
+</body>
+</html>
