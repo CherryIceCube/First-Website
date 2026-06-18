@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Task Management System</title>
+
+<title>Tanmay Priyadarshi | Portfolio</title>
 
 <style>
 
-/* =========================
-   RESET
-========================= */
+/* =====================
+   GLOBAL STYLES
+===================== */
 
 *{
     margin:0;
@@ -17,167 +18,184 @@
     box-sizing:border-box;
 }
 
-/* =========================
-   COLORS
-========================= */
-
-:root{
-    --bg:#050505;
-    --card:#111;
-    --red:#ff0033;
-    --text:#ffffff;
-    --green:#00ff88;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:Consolas, monospace;
-    min-height:100vh;
-    overflow-x:hidden;
+    font-family:Segoe UI, sans-serif;
+    background:#f8fafc;
+    color:#1f2937;
+    line-height:1.6;
 }
 
-/* Matrix canvas */
-#matrix{
+/* =====================
+   NAVBAR
+===================== */
+
+nav{
     position:fixed;
     top:0;
-    left:0;
     width:100%;
-    height:100%;
-    z-index:-1;
+    background:#1e3a8a;
+    padding:15px 0;
+    z-index:1000;
 }
 
-/* Main container */
-.container{
-    max-width:900px;
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#0ea5a4;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+
+section{
+    padding:90px 20px;
+    max-width:1100px;
     margin:auto;
-    padding:40px 20px;
 }
 
-/* Header */
-h1{
+h2{
+    color:#1e3a8a;
+    margin-bottom:20px;
+}
+
+/* =====================
+   HERO
+===================== */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    color:var(--red);
-    text-shadow:0 0 15px var(--red);
-    margin-bottom:30px;
+    flex-direction:column;
 }
 
-/* Terminal input area */
-.terminal{
-    background:#000;
-    border:1px solid var(--red);
+.profile-img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #0ea5a4;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:3rem;
+    color:#1e3a8a;
+}
+
+.hero h3{
+    margin-top:10px;
+    font-weight:500;
+}
+
+.quote{
+    margin-top:20px;
+    font-style:italic;
+    color:#555;
+}
+
+/* =====================
+   CARDS
+===================== */
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* =====================
+   SKILLS
+===================== */
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.skill{
+    background:#1e3a8a;
+    color:white;
     padding:15px;
-    margin-bottom:25px;
-}
-
-.prompt{
-    color:var(--green);
-    margin-bottom:10px;
-}
-
-.input-row{
-    display:flex;
-    gap:10px;
-}
-
-input{
-    flex:1;
-    padding:12px;
-    background:#111;
-    color:white;
-    border:1px solid #333;
-    outline:none;
-}
-
-button{
-    padding:12px 18px;
-    background:transparent;
-    color:white;
-    border:1px solid var(--red);
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    background:var(--red);
-}
-
-/* Dashboard */
-.dashboard{
-    background:rgba(17,17,17,.95);
-    border:1px solid #222;
-    padding:20px;
-    margin-bottom:25px;
-}
-
-.stat{
-    margin-bottom:10px;
-}
-
-.progress{
-    height:20px;
-    background:#222;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    height:100%;
-    width:0%;
-    background:var(--red);
-    transition:.3s;
-}
-
-/* Task section */
-.tasks{
-    background:rgba(17,17,17,.95);
-    border:1px solid #222;
-    padding:20px;
-}
-
-.task{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:12px;
-    border-bottom:1px solid #222;
-}
-
-.task-left{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.task.completed span{
-    text-decoration:line-through;
-    opacity:.5;
-}
-
-.delete-btn{
-    border-color:#555;
-}
-
-.delete-btn:hover{
-    background:#990000;
-}
-
-.footer{
+    border-radius:10px;
     text-align:center;
-    margin-top:30px;
-    color:#888;
 }
 
-/* Mobile */
-@media(max-width:600px){
+/* =====================
+   HOBBIES
+===================== */
 
-    .input-row{
-        flex-direction:column;
-    }
+.hobby-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
 
-    button{
-        width:100%;
-    }
+.hobby{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.beatbox-img{
+    width:100%;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+/* =====================
+   CONTACT
+===================== */
+
+.contact-box{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+footer{
+    background:#1e3a8a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2rem;
+}
+
+nav ul{
+    gap:15px;
+    flex-wrap:wrap;
+}
 
 }
 
@@ -185,344 +203,169 @@ button:hover{
 </head>
 <body>
 
-<canvas id="matrix"></canvas>
+<!-- Navigation -->
 
-<div class="container">
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#background">Background</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#hobbies">Hobbies</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-    <h1>TASK MANAGEMENT SYSTEM</h1>
+<!-- Home -->
 
-    <!-- Terminal -->
-    <div class="terminal">
+<section id="home" class="hero">
 
-        <div class="prompt">
-            root@matrix:~$
-        </div>
+<img src="formal.jpg"
+alt="Tanmay Priyadarshi"
+class="profile-img">
 
-        <div class="input-row">
-            <input
-                id="taskInput"
-                type="text"
-                placeholder="Enter mission objective..."
-            >
+<h1>Tanmay Priyadarshi</h1>
 
-            <button onclick="addTask()">
-                ADD
-            </button>
-        </div>
+<h3>Postgraduate Student at XIMB</h3>
 
-    </div>
+<h3>Former Risk Consultant at PwC</h3>
 
-    <!-- Dashboard -->
-    <div class="dashboard">
+<p class="quote">
+"Be the change you wish to see in the world."
+</p>
 
-        <div class="stat">
-            Total Tasks:
-            <span id="totalTasks">0</span>
-        </div>
+</section>
 
-        <div class="stat">
-            Completed:
-            <span id="completedTasks">0</span>
-        </div>
+<!-- About -->
 
-        <div class="stat">
-            Pending:
-            <span id="pendingTasks">0</span>
-        </div>
+<section id="about">
 
-        <br>
+<h2>About Me</h2>
 
-        <div class="progress">
-            <div
-                class="progress-bar"
-                id="progressBar">
-            </div>
-        </div>
+<div class="card">
 
-    </div>
-
-    <!-- Task List -->
-    <div class="tasks">
-
-        <h2>ACTIVE MISSIONS</h2>
-
-        <br>
-
-        <div id="taskList"></div>
-
-    </div>
-
-    <div class="footer">
-        SYSTEM STATUS: ONLINE
-    </div>
+<p>
+Hello! I'm Tanmay Priyadarshi, currently pursuing my postgraduate studies at Xavier Institute of Management, Bhubaneswar (XIMB). I completed my Bachelor's degree in Electrical & Electronics Engineering from VIT Vellore and previously worked as a Risk Consultant at PwC. I enjoy combining analytical thinking with creative pursuits such as beatboxing, video editing, and football.
+</p>
 
 </div>
 
-<script>
-
-/* =========================
-   TASK SYSTEM
-========================= */
-
-let tasks =
-    JSON.parse(
-        localStorage.getItem("tasks")
-    ) || [];
-
-/* Save tasks */
-function saveTasks(){
-    localStorage.setItem(
-        "tasks",
-        JSON.stringify(tasks)
-    );
-}
+</section>
 
-/* Add task */
-function addTask(){
-
-    const input =
-        document.getElementById(
-            "taskInput"
-        );
+<!-- Background -->
 
-    const text =
-        input.value.trim();
+<section id="background">
 
-    if(text === "") return;
+<h2>Academic & Professional Background</h2>
 
-    tasks.push({
-        text:text,
-        completed:false
-    });
+<div class="card">
 
-    input.value = "";
+<p>
+I completed my Bachelor's degree in Electrical & Electronics Engineering from VIT Vellore and worked as a Risk Consultant at PwC, where I gained experience in risk management, problem-solving, and professional collaboration. I am currently pursuing my postgraduate studies at XIMB to further develop my management, leadership, and decision-making skills.
+</p>
 
-    saveTasks();
-    renderTasks();
-}
+</div>
 
-/* Toggle completed */
-function toggleTask(index){
-
-    tasks[index].completed =
-        !tasks[index].completed;
+</section>
 
-    saveTasks();
-    renderTasks();
-}
-
-/* Delete task */
-function deleteTask(index){
-
-    tasks.splice(index,1);
-
-    saveTasks();
-    renderTasks();
-}
-
-/* Render all tasks */
-function renderTasks(){
-
-    const taskList =
-        document.getElementById(
-            "taskList"
-        );
-
-    taskList.innerHTML = "";
-
-    tasks.forEach((task,index)=>{
-
-        const div =
-            document.createElement("div");
-
-        div.className =
-            "task" +
-            (task.completed
-            ? " completed"
-            : "");
-
-        div.innerHTML = `
-            <div class="task-left">
-                <input
-                    type="checkbox"
-                    ${task.completed
-                        ? "checked"
-                        : ""}
-                    onchange="toggleTask(${index})"
-                >
+<!-- Skills -->
 
-                <span>
-                    ${task.text}
-                </span>
-            </div>
+<section id="skills">
 
-            <button
-                class="delete-btn"
-                onclick="deleteTask(${index})">
-                DELETE
-            </button>
-        `;
+<h2>Skills</h2>
 
-        taskList.appendChild(div);
-    });
+<div class="skills-grid">
 
-    updateStats();
-}
+<div class="skill">Video Editing</div>
+<div class="skill">Audio Editing</div>
+<div class="skill">Beatboxing & Vocal Percussion</div>
+<div class="skill">Microsoft Excel</div>
+<div class="skill">Microsoft PowerPoint</div>
+<div class="skill">Presentation Skills</div>
+<div class="skill">Communication Skills</div>
+<div class="skill">Team Collaboration</div>
+<div class="skill">Problem Solving</div>
+<div class="skill">Leadership & Event Participation</div>
 
-/* Dashboard statistics */
-function updateStats(){
+</div>
 
-    const total =
-        tasks.length;
+</section>
 
-    const completed =
-        tasks.filter(
-            t => t.completed
-        ).length;
+<!-- Hobbies -->
 
-    const pending =
-        total - completed;
+<section id="hobbies">
 
-    document.getElementById(
-        "totalTasks"
-    ).textContent = total;
+<h2>Hobbies & Interests</h2>
 
-    document.getElementById(
-        "completedTasks"
-    ).textContent = completed;
+<div class="hobby-grid">
 
-    document.getElementById(
-        "pendingTasks"
-    ).textContent = pending;
+<div class="hobby">
+<h3>Football</h3>
+<p>
+I enjoy playing football as it helps me stay active, improve teamwork, and maintain discipline.
+</p>
+</div>
 
-    const percentage =
-        total === 0
-        ? 0
-        : (completed/total)*100;
-
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        percentage + "%";
-}
+<div class="hobby">
+<h3>Beatboxing</h3>
+<p>
+Beatboxing is one of my favorite creative outlets and allows me to express rhythm, creativity, and confidence through performance.
+</p>
 
-/* Enter key support */
-document
-.getElementById("taskInput")
-.addEventListener(
-    "keypress",
-    function(event){
-
-        if(event.key==="Enter"){
-            addTask();
-        }
-
-    }
-);
-
-/* Initial load */
-renderTasks();
+<img src="beatbox.jpg"
+alt="Beatboxing"
+class="beatbox-img">
 
-/* =========================
-   MATRIX BACKGROUND
-========================= */
-
-const canvas =
-    document.getElementById(
-        "matrix"
-    );
-
-const ctx =
-    canvas.getContext("2d");
-
-canvas.width =
-    window.innerWidth;
-
-canvas.height =
-    window.innerHeight;
-
-const chars =
-    "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-const letters =
-    chars.split("");
-
-const fontSize = 16;
-
-const columns =
-    canvas.width / fontSize;
-
-const drops = [];
-
-for(let i=0;i<columns;i++){
-    drops[i]=1;
-}
-
-function drawMatrix(){
-
-    ctx.fillStyle =
-        "rgba(0,0,0,0.07)";
-
-    ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    ctx.fillStyle =
-        "#ff0033";
-
-    ctx.font =
-        fontSize + "px monospace";
-
-    for(let i=0;i<drops.length;i++){
-
-        const text =
-            letters[
-                Math.floor(
-                    Math.random()
-                    *
-                    letters.length
-                )
-            ];
-
-        ctx.fillText(
-            text,
-            i*fontSize,
-            drops[i]*fontSize
-        );
-
-        if(
-            drops[i]*fontSize >
-            canvas.height &&
-            Math.random()>0.975
-        ){
-            drops[i]=0;
-        }
-
-        drops[i]++;
-    }
-}
-
-setInterval(
-    drawMatrix,
-    35
-);
-
-window.addEventListener(
-    "resize",
-    ()=>{
-
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
-    }
-);
-
-</script>
+</div>
+
+<div class="hobby">
+<h3>FPS Video Games</h3>
+<p>
+I enjoy FPS games that challenge strategic thinking, quick decision-making, and teamwork.
+</p>
+</div>
+
+<div class="hobby">
+<h3>Video Editing</h3>
+<p>
+I enjoy creating and editing videos, experimenting with storytelling and content creation.
+</p>
+</div>
+
+<div class="hobby">
+<h3>Gardening</h3>
+<p>
+Gardening helps me relax, stay connected with nature, and develop patience and consistency.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- Contact -->
+
+<section id="contact">
+
+<h2>Contact Me</h2>
+
+<div class="contact-box">
+
+<p><strong>Email:</strong> tanmay09p@gmail.com</p>
+
+<br>
+
+<p><strong>Phone:</strong> +91 8427692417</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Tanmay Priyadarshi
+
+</footer>
 
 </body>
 </html>
